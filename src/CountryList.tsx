@@ -267,7 +267,7 @@ export const CountryList = (props: CountryListProps) => {
           contentContainerStyle={styles.letters}
           keyboardShouldPersistTaps='always'
         >
-          {letters.map(letter => (
+          {letters.map((letter) => (
             <Letter key={letter} {...{ letter, scrollTo }} />
           ))}
         </ScrollView>

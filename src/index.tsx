@@ -23,6 +23,7 @@ interface Props {
   theme?: Theme
   translation?: TranslationLanguageCode
   modalProps?: ModalProps
+  filterHeading?: string
   filterProps?: CountryFilterProps
   flatListProps?: FlatListProps<Country>
   withAlphaFilter?: boolean

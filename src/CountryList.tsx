@@ -2,6 +2,7 @@ import React, { useRef, memo, useState, useEffect } from 'react'
 import {
   StyleSheet,
   View,
+  Text,
   FlatList,
   ScrollView,
   TouchableOpacity,
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
   },
   codeText: {
     textAlign: 'right',
-    fontWeight: '800',
+    fontWeight: '700',
   },
   itemCountry: {
     flexDirection: 'row',
@@ -98,7 +99,12 @@ interface CountryItemProps {
   onSelect(country: Country): void
 }
 const CountryItem = (props: CountryItemProps) => {
-  const { activeOpacity, itemHeight, flagSize } = useTheme()
+  const {
+    activeOpacity,
+    itemHeight,
+    flagSize,
+    countryCodeFontStyle,
+  } = useTheme()
   const {
     country,
     onSelect,
@@ -138,11 +144,12 @@ const CountryItem = (props: CountryItemProps) => {
           <CountryText
             numberOfLines={1}
             ellipsizeMode='tail'
-            style={[styles.codeText]}
             allowFontScaling={false}
           >
-            {' '}
-            {extraContent.length > 0 && ` ${extraContent.join(', ')}`}
+            <Text style={[styles.codeText, countryCodeFontStyle]}>
+              {' '}
+              {extraContent.length > 0 && ` ${extraContent.join(', ')}`}
+            </Text>
           </CountryText>
         </View>
       </View>

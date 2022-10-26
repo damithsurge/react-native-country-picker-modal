@@ -1,5 +1,4 @@
 import React from 'react'
-
 import {
   Text,
   TextInput,
@@ -13,7 +12,6 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native'
-
 import { useTheme } from './CountryTheme'
 import close_icon_red from './assets/images/close_icon_red.png'
 import search_icon from './assets/images/search_icon.png'
@@ -26,14 +24,13 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     alignSelf: 'center',
-    marginTop: 24,
+    marginTop: 20,
     marginBottom: 6,
     borderBottomWidth: 1,
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5,
     borderBottomColor: '#FDEFEC',
   },
-
   headingText: {
     color: 'black',
     fontWeight: '600',
@@ -42,7 +39,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
   },
-
   inputContainer: {
     flexDirection: 'row',
     height: 50,
@@ -50,14 +46,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    marginTop: 10,
+    marginTop: 14,
     marginBottom: 16,
     marginHorizontal: 16,
     borderWidth: 1,
-    borderColor: '#FDEFEC',
+    borderColor: '#F8C2B4',
     borderRadius: 6,
   },
-
   input: {
     width: '100%',
     alignSelf: 'center',
@@ -65,7 +60,6 @@ const styles = StyleSheet.create({
     lineHeight: 23,
     fontSize: 17,
     padding: 10,
-
     ...Platform.select({
       web: {
         outlineWidth: 1,
@@ -114,6 +108,11 @@ export const CountryFilter = (props: CountryFilterProps) => {
     filterHeadingTextColor,
   } = useTheme()
 
+  const onCloseButtonPress = () => {
+    if (typeof props.onClose === 'function') {
+      props.onClose()
+    }
+  }
   return (
     <View style={styles.container}>
       <Text
@@ -142,12 +141,14 @@ export const CountryFilter = (props: CountryFilterProps) => {
           placeholderTextColor={filterPlaceholderTextColor}
           style={[
             styles.input,
-
             { fontFamily, fontSize, color: onBackgroundTextColor },
           ]}
           {...props}
         />
-        <TouchableOpacity style={styles.rightIconContainer}>
+        <TouchableOpacity
+          style={styles.rightIconContainer}
+          onPress={onCloseButtonPress}
+        >
           <Image
             source={close_icon_red}
             style={styles.rightIcon}

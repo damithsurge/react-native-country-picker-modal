@@ -20,6 +20,9 @@ export const DEFAULT_THEME = {
   flagSizeButton: Platform.select({ android: 20, default: 30 }),
   filterHeadingFontSize: 20,
   filterHeadingTextColor: '#000000',
+  countryCodeFontStyle: {
+    fontWeight: '700',
+  },
 }
 export const DARK_THEME = {
   ...DEFAULT_THEME,

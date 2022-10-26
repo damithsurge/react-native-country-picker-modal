@@ -18,8 +18,8 @@ export const DEFAULT_THEME = {
   itemHeight: getHeightPercent(7),
   flagSize: Platform.select({ android: 20, default: 30 }),
   flagSizeButton: Platform.select({ android: 20, default: 30 }),
-  headingFontSize: 20,
-  headingTextColor: '#000000',
+  filterHeadingFontSize: 20,
+  filterHeadingTextColor: '#000000',
 }
 export const DARK_THEME = {
   ...DEFAULT_THEME,

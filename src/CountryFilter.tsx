@@ -15,6 +15,7 @@ import {
 import { useTheme } from './CountryTheme'
 import close_icon_red from './assets/images/close_icon_red.png'
 import search_icon from './assets/images/search_icon.png'
+import arrow_left from './assets/images/arrow_left.png'
 
 const { width: DEVICE_WIDTH } = Dimensions.get('window')
 
@@ -92,6 +93,21 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
   },
+
+  headingContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItem: 'flex-end',
+    width: DEVICE_WIDTH - 32,
+  },
+  headingTextContainer: {
+    alignSelf: 'center',
+    width: '100%',
+  },
+  backIcon: {
+    width: 24,
+    height: 24,
+  },
 })
 
 export type CountryFilterProps = TextInputProps &
@@ -113,20 +129,41 @@ export const CountryFilter = (props: CountryFilterProps) => {
       props.onClose()
     }
   }
+
+  const handelClear = () => {
+    if (typeof props.onChangeText === 'function') {
+      props.onChangeText('')
+    }
+  }
+
   return (
     <View style={styles.container}>
-      <Text
-        style={[
-          styles.headingText,
-          {
-            fontFamily,
-            fontSize: filterHeadingFontSize,
-            color: filterHeadingTextColor,
-          },
-        ]}
-      >
-        {props.filterHeading}
-      </Text>
+      <View style={styles.headingContainer}>
+        <TouchableOpacity
+          style={styles.rightIconContainer}
+          onPress={onCloseButtonPress}
+        >
+          <Image
+            source={arrow_left}
+            style={styles.backIcon}
+            resizeMode='contain'
+          />
+        </TouchableOpacity>
+        <View style={styles.headingTextContainer}>
+          <Text
+            style={[
+              styles.headingText,
+              {
+                fontFamily,
+                fontSize: filterHeadingFontSize,
+                color: filterHeadingTextColor,
+              },
+            ]}
+          >
+            {props.filterHeading}
+          </Text>
+        </View>
+      </View>
       <View style={styles.inputContainer}>
         <View style={styles.leftIconContainer}>
           <Image
@@ -147,7 +184,7 @@ export const CountryFilter = (props: CountryFilterProps) => {
         />
         <TouchableOpacity
           style={styles.rightIconContainer}
-          onPress={onCloseButtonPress}
+          onPress={handelClear}
         >
           <Image
             source={close_icon_red}

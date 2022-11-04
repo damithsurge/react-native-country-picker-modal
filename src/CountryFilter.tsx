@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   headingTextContainer: {
     flex: 1,
     alignSelf: 'center',
-    paddingRight: 40,
+    paddingRight: 56,
   },
 
   backIconContainer: {

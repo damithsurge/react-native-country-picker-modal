@@ -42,14 +42,13 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     flexDirection: 'row',
-    height: 50,
+    height: 48,
     width: DEVICE_WIDTH - 32,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     marginTop: 14,
     marginBottom: 16,
-    marginHorizontal: 16,
     borderWidth: 1,
     borderColor: '#F8C2B4',
     borderRadius: 6,
@@ -97,13 +96,22 @@ const styles = StyleSheet.create({
   headingContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    alignItems: 'flex-end',
-    width: DEVICE_WIDTH - 32,
-  },
-  headingTextContainer: {
-    alignSelf: 'center',
+    alignItems: 'flex-start',
     width: '100%',
   },
+  headingTextContainer: {
+    flex: 1,
+    alignSelf: 'center',
+    paddingRight: 40,
+  },
+
+  backIconContainer: {
+    paddingLeft: 16,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    alignSelf: 'flex-start',
+  },
+
   backIcon: {
     width: 24,
     height: 24,
@@ -140,7 +148,7 @@ export const CountryFilter = (props: CountryFilterProps) => {
     <View style={styles.container}>
       <View style={styles.headingContainer}>
         <TouchableOpacity
-          style={styles.rightIconContainer}
+          style={styles.backIconContainer}
           onPress={onCloseButtonPress}
         >
           <Image

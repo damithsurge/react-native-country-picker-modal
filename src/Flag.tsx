@@ -94,6 +94,6 @@ export const Flag = ({
   ) : null
 
 Flag.defaultProps = {
-  withEmoji: true,
+  withEmoji: false,
   withFlagButton: true,
 }

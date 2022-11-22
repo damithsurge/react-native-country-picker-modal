@@ -3,7 +3,7 @@ import { Emoji } from './Emoji'
 import { CountryCode } from './types'
 import { useContext } from './CountryContext'
 import { useAsync } from 'react-async-hook'
-import CountryFlag from 'react-native-country-flag'
+// import CountryFlag from 'react-native-country-flag'
 import {
   Image,
   StyleSheet,
@@ -49,17 +49,17 @@ const ImageFlag = memo(({ countryCode, flagSize }: FlagType) => {
   if (asyncResult.loading) {
     return <ActivityIndicator size={'small'} />
   }
-  return <CountryFlag isoCode={countryCode.toLocaleLowerCase()} size={20} />
-  // return (
-  //   <Image
-  //     resizeMode={'contain'}
-  //     style={[
-  //       styles.imageFlag,
-  //       { borderColor: 'transparent', height: flagSize },
-  //     ]}
-  //     source={{ uri: asyncResult.result }}
-  //   />
-  // )
+  // return <CountryFlag isoCode={countryCode.toLocaleLowerCase()} size={20} />
+  return (
+    <Image
+      resizeMode={'contain'}
+      style={[
+        styles.imageFlag,
+        { borderColor: 'transparent', height: flagSize },
+      ]}
+      source={{ uri: asyncResult.result }}
+    />
+  )
 })
 
 const EmojiFlag = memo(({ countryCode, flagSize }: FlagType) => {

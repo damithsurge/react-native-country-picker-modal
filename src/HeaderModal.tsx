@@ -49,5 +49,5 @@ export const HeaderModal = (props: HeaderModalProps) => {
 }
 
 HeaderModal.defaultProps = {
-  withCloseButton: true
+  withCloseButton: false
 }

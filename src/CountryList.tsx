@@ -2,6 +2,7 @@ import React, { useRef, memo, useState, useEffect } from 'react'
 import {
   StyleSheet,
   View,
+  Text,
   FlatList,
   ScrollView,
   TouchableOpacity,
@@ -39,21 +40,30 @@ const styles = StyleSheet.create({
   letterText: {
     textAlign: 'center',
   },
+  codeText: {
+    textAlign: 'right',
+    fontWeight: '700',
+  },
   itemCountry: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingHorizontal: 5,
+    paddingHorizontal: 14,
   },
   itemCountryName: {
-    width: '90%',
+    flex: 1,
+    marginHorizontal: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   list: {
     flex: 1,
   },
   sep: {
+    flex: 1,
     borderBottomWidth,
-    width: '100%',
+    marginHorizontal: 16,
   },
 })
 
@@ -63,6 +73,7 @@ interface LetterProps {
 }
 const Letter = ({ letter, scrollTo }: LetterProps) => {
   const { fontSize, activeOpacity } = useTheme()
+
   return (
     <TouchableOpacity
       testID={`letter-${letter}`}
@@ -71,10 +82,7 @@ const Letter = ({ letter, scrollTo }: LetterProps) => {
       {...{ activeOpacity }}
     >
       <View style={styles.letter}>
-        <CountryText
-          style={[styles.letterText, { fontSize: fontSize! * 0.8 }]}
-          allowFontScaling={false}
-        >
+        <CountryText style={[styles.letterText, { fontSize: fontSize! * 0.8 }]}>
           {letter}
         </CountryText>
       </View>
@@ -91,7 +99,12 @@ interface CountryItemProps {
   onSelect(country: Country): void
 }
 const CountryItem = (props: CountryItemProps) => {
-  const { activeOpacity, itemHeight, flagSize } = useTheme()
+  const {
+    activeOpacity,
+    itemHeight,
+    flagSize,
+    countryCodeFontStyle,
+  } = useTheme()
   const {
     country,
     onSelect,
@@ -125,13 +138,18 @@ const CountryItem = (props: CountryItemProps) => {
           />
         )}
         <View style={styles.itemCountryName}>
-          <CountryText
-            allowFontScaling={false}
-            numberOfLines={2}
-            ellipsizeMode='tail'
-          >
+          <CountryText numberOfLines={2} ellipsizeMode='tail'>
             {country.name}
-            {extraContent.length > 0 && ` (${extraContent.join(', ')})`}
+          </CountryText>
+          <CountryText
+            numberOfLines={1}
+            ellipsizeMode='tail'
+            allowFontScaling={false}
+          >
+            <Text style={[styles.codeText, countryCodeFontStyle]}>
+              {' '}
+              {extraContent.length > 0 && ` ${extraContent.join(', ')}`}
+            </Text>
           </CountryText>
         </View>
       </View>
@@ -140,7 +158,7 @@ const CountryItem = (props: CountryItemProps) => {
 }
 CountryItem.defaultProps = {
   withFlag: true,
-  withCallingCode: false,
+  withCallingCode: true,
 }
 const MemoCountryItem = memo<CountryItemProps>(CountryItem)
 
@@ -267,4 +285,5 @@ export const CountryList = (props: CountryListProps) => {
 
 CountryList.defaultProps = {
   filterFocus: undefined,
+  withCallingCode: true,
 }

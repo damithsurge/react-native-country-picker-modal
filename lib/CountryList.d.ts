@@ -16,6 +16,7 @@ export declare const CountryList: {
     (props: CountryListProps): JSX.Element;
     defaultProps: {
         filterFocus: undefined;
+        withCallingCode: boolean;
     };
 };
 export {};

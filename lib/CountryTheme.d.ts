@@ -11,6 +11,11 @@ export declare const DEFAULT_THEME: {
     itemHeight: number;
     flagSize: number;
     flagSizeButton: number;
+    filterHeadingFontSize: number;
+    filterHeadingTextColor: string;
+    countryCodeFontStyle: {
+        fontWeight: string;
+    };
 };
 export declare const DARK_THEME: {
     primaryColor: string;
@@ -24,6 +29,11 @@ export declare const DARK_THEME: {
     itemHeight: number;
     flagSize: number;
     flagSizeButton: number;
+    filterHeadingFontSize: number;
+    filterHeadingTextColor: string;
+    countryCodeFontStyle: {
+        fontWeight: string;
+    };
 };
 export declare type Theme = Partial<typeof DEFAULT_THEME>;
 declare const ThemeProvider: import("react").ComponentType<{
@@ -39,6 +49,11 @@ declare const ThemeProvider: import("react").ComponentType<{
         itemHeight: number;
         flagSize: number;
         flagSizeButton: number;
+        filterHeadingFontSize: number;
+        filterHeadingTextColor: string;
+        countryCodeFontStyle: {
+            fontWeight: string;
+        };
     }> | undefined;
 }>, useTheme: (overrides?: import("@callstack/react-theme-provider").$DeepPartial<Partial<{
     primaryColor: string;
@@ -52,6 +67,11 @@ declare const ThemeProvider: import("react").ComponentType<{
     itemHeight: number;
     flagSize: number;
     flagSizeButton: number;
+    filterHeadingFontSize: number;
+    filterHeadingTextColor: string;
+    countryCodeFontStyle: {
+        fontWeight: string;
+    };
 }>> | undefined) => Partial<{
     primaryColor: string;
     primaryColorVariant: string;
@@ -64,5 +84,10 @@ declare const ThemeProvider: import("react").ComponentType<{
     itemHeight: number;
     flagSize: number;
     flagSizeButton: number;
+    filterHeadingFontSize: number;
+    filterHeadingTextColor: string;
+    countryCodeFontStyle: {
+        fontWeight: string;
+    };
 }>;
 export { ThemeProvider, useTheme };

@@ -3,7 +3,8 @@ import { Emoji } from './Emoji'
 import { CountryCode } from './types'
 import { useContext } from './CountryContext'
 import { useAsync } from 'react-async-hook'
-import CountryFlag from 'react-native-country-flag'
+// import CountryFlag from 'react-native-country-flag'
+import * as flag from './assets/countryFlags/'
 import {
   Image,
   StyleSheet,
@@ -29,8 +30,8 @@ const styles = StyleSheet.create({
   },
   imageFlag: {
     resizeMode: 'contain',
-    width: 25,
-    height: 19,
+    width: 26,
+    height: 20,
     borderWidth: 1 / PixelRatio.get(),
     opacity: 0.8,
   },
@@ -49,17 +50,17 @@ const ImageFlag = memo(({ countryCode, flagSize }: FlagType) => {
   if (asyncResult.loading) {
     return <ActivityIndicator size={'small'} />
   }
-  return <CountryFlag isoCode={countryCode.toLocaleLowerCase()} size={20} />
-  // return (
-  //   <Image
-  //     resizeMode={'contain'}
-  //     style={[
-  //       styles.imageFlag,
-  //       { borderColor: 'transparent', height: flagSize },
-  //     ]}
-  //     source={{ uri: asyncResult.result }}
-  //   />
-  // )
+  // return <CountryFlag isoCode={countryCode.toLocaleLowerCase()} size={20} />
+  return (
+    <Image
+      resizeMode={'contain'}
+      style={[
+        styles.imageFlag,
+        { borderColor: 'transparent', height: flagSize },
+      ]}
+      source={(flag as any)[countryCode.toLowerCase()]}
+    />
+  )
 })
 
 const EmojiFlag = memo(({ countryCode, flagSize }: FlagType) => {

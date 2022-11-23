@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
   },
   imageFlag: {
     resizeMode: 'contain',
-    width: 26,
-    height: 20,
+    width: 28,
+    height: 23,
     borderWidth: 1 / PixelRatio.get(),
     opacity: 0.8,
   },

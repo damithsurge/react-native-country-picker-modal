@@ -4,6 +4,7 @@ import { CountryCode } from './types'
 import { useContext } from './CountryContext'
 import { useAsync } from 'react-async-hook'
 // import CountryFlag from 'react-native-country-flag'
+import * as flag from './assets/countryFlags/'
 import {
   Image,
   StyleSheet,
@@ -29,8 +30,8 @@ const styles = StyleSheet.create({
   },
   imageFlag: {
     resizeMode: 'contain',
-    width: 25,
-    height: 19,
+    width: 28,
+    height: 23,
     borderWidth: 1 / PixelRatio.get(),
     opacity: 0.8,
   },
@@ -57,7 +58,7 @@ const ImageFlag = memo(({ countryCode, flagSize }: FlagType) => {
         styles.imageFlag,
         { borderColor: 'transparent', height: flagSize },
       ]}
-      source={{ uri: asyncResult.result }}
+      source={(flag as any)[countryCode.toLowerCase()]}
     />
   )
 })

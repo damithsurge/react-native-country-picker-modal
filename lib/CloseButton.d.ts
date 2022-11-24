@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { StyleProp, ViewStyle, ImageSourcePropType, ImageStyle } from 'react-native';
 import PropTypes from 'prop-types';
 interface CloseButtonProps {

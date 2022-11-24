@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { TextInputProps, ViewProps, TextProps } from 'react-native';
 export declare type CountryFilterProps = TextInputProps & ViewProps & TextProps & {
     filterHeading: string;

@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { CountryCode } from './types';
 interface FlagType {
     countryCode: CountryCode;

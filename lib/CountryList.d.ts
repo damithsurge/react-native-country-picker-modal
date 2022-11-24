@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { FlatListProps } from 'react-native';
 import { Country } from './types';
 interface CountryListProps {

@@ -12,6 +12,7 @@ import {
   Text,
   View,
   ActivityIndicator,
+  ImageSourcePropType,
 } from 'react-native'
 
 const styles = StyleSheet.create({
@@ -44,6 +45,20 @@ interface FlagType {
   flagSize: number
 }
 
+const getCountryFlagImage = (countryCode: string): ImageSourcePropType => {
+  let formattedCode = countryCode
+  //To fix variable name issue
+  switch (countryCode) {
+    case 'IN':
+      formattedCode = 'IND'
+      break
+    case 'DO':
+      formattedCode = 'DOM'
+      break
+  }
+  return (flag as any)[formattedCode.toLowerCase()]
+}
+
 const ImageFlag = memo(({ countryCode, flagSize }: FlagType) => {
   const { getImageFlagAsync } = useContext()
   const asyncResult = useAsync(getImageFlagAsync, [countryCode])
@@ -58,7 +73,7 @@ const ImageFlag = memo(({ countryCode, flagSize }: FlagType) => {
         styles.imageFlag,
         { borderColor: 'transparent', height: flagSize },
       ]}
-      source={(flag as any)[countryCode.toLowerCase()]}
+      source={getCountryFlagImage(countryCode)}
     />
   )
 })
